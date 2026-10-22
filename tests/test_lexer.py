@@ -54,6 +54,45 @@ class TestLexer(unittest.TestCase):
         self.assertEqual(tokens[1].line, 2)
         self.assertEqual(tokens[1].column, 1)
 
+    
+def test_all_new_keywords(self):
+    source = """
+    BACK SPEED POSITION PEN_UP PEN_DOWN
+    LET IF ELSE WHILE PRINT FUNC
+    AND OR NOT TRUE FALSE OBSTACLE_AHEAD
+    """
+
+    tokens = Lexer(source).tokenize()
+
+    expected = [
+        "BACK", "SPEED", "POSITION",
+        "PEN_UP", "PEN_DOWN",
+        "LET", "IF", "ELSE", "WHILE",
+        "PRINT", "FUNC", "AND", "OR",
+        "NOT", "TRUE", "FALSE",
+        "OBSTACLE_AHEAD"
+    ]
+
+    actual = [token.token_type for token in tokens]
+
+    self.assertEqual(actual, expected)
+
+
+def test_function_parameters(self):
+    source = "FUNC draw_rectangle(width, height) {}"
+
+    tokens = Lexer(source).tokenize()
+
+    expected = [
+        "FUNC", "IDENTIFIER", "LEFT_PAREN",
+        "IDENTIFIER", "COMMA", "IDENTIFIER",
+        "RIGHT_PAREN", "LEFT_BRACE",
+        "RIGHT_BRACE"
+    ]
+
+    actual = [token.token_type for token in tokens]
+
+    self.assertEqual(actual, expected)
 
 if __name__ == "__main__":
     unittest.main()
