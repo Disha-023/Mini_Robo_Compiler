@@ -9,7 +9,7 @@ from robot.simulator import RobotSimulator
 
 # ROBOLANG 2.0 - LEXER TEST MODE
 
-TEST_NEW_LEXER = True
+TEST_NEW_LEXER = False
 
 
 program = """
@@ -77,10 +77,6 @@ if TEST_NEW_LEXER:
 
     print("\nNEW FEATURES LEXER TEST COMPLETED!")
 
-    # Stop here because the old parser does not
-    # support the new RoboLang 2.0 syntax yet.
-    raise SystemExit(0)
-
 
 
 # PHASE 2: LEXER
@@ -138,27 +134,10 @@ print("\nRobot Execution:")
 
 executor.execute(instructions)
 
-print("\nStarting Robot Simulator...")
-
-simulator = RobotSimulator(instructions)
-
-simulator.run()
-
-
-# ROBOT EXECUTION (ORIGINAL SECOND RUN)
-
-executor = RobotExecutor()
-
-print("\nRobot Execution:")
-
-executor.execute(instructions)
-
-
-
-# 2D SIMULATOR (ORIGINAL SECOND RUN)
+# 2D SIMULATOR
 
 print("\nStarting Robot Simulator...")
 
-simulator = RobotSimulator(instructions)
+simulator = RobotSimulator(executor.robot)
 
 simulator.run()
