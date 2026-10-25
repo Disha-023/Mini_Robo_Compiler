@@ -12,48 +12,120 @@ from robot.simulator import RobotSimulator
 TEST_NEW_LEXER = False
 
 
+
 program = """
 START
 
-// Testing new RoboLang 2.0 features
+// ROBOLANG 2.0 - COMPLETE LEXICAL ANALYSIS DEMO
+// Testing all keywords, operators and punctuation
 
+// Variable declarations and identifiers
 LET steps = 5
-LET speed_value = 2
-LET result = (steps + 3) * 2 - 1 / 1
+LET speed_value = 1
+LET total = 10
+LET robot_counter2 = 3
 
-SPEED speed_value
-PEN_DOWN
+// All arithmetic operators: + - * /
+LET addition = 10 + 5
+LET subtraction = 10 - 5
+LET multiplication = 10 * 5
+LET division = 10 / 2
+LET combined = (10 + 5) * 2 - 8 / 4
 
-IF steps >= 3 AND NOT OBSTACLE_AHEAD {
-    MOVE steps
-} ELSE {
-    BACK 2
+// Assignment
+steps = steps + 1
+
+// Comparison operators: > < >= <= == !=
+IF steps > 2 {
+    PRINT "Greater than"
 }
 
-WHILE steps < 10 OR steps == 5 {
+IF steps < 20 {
+    PRINT "Less than"
+}
+
+IF steps >= 5 {
+    PRINT "Greater or equal"
+}
+
+IF steps <= 10 {
+    PRINT "Less or equal"
+}
+
+IF steps == 6 {
+    PRINT "Equal"
+}
+
+IF steps != 0 {
+    PRINT "Not equal"
+}
+
+// Logical operators and Boolean keywords
+IF TRUE AND NOT FALSE {
+    PRINT "AND and NOT working"
+}
+
+IF FALSE OR TRUE {
+    PRINT "OR working"
+}
+
+// Robot commands
+SPEED speed_value
+PEN_DOWN
+MOVE 5
+BACK 2
+TURN LEFT
+TURN RIGHT
+PEN_UP
+POSITION
+
+// Obstacle keyword and ELSE
+IF OBSTACLE_AHEAD {
+    BACK 1
+} ELSE {
+    MOVE 1
+}
+
+// WHILE loop
+WHILE steps < 8 {
     steps = steps + 1
 }
 
-FUNC draw_square(size) {
-    REPEAT 4 {
-        MOVE size
-        TURN RIGHT
-    }
+// REPEAT loop
+REPEAT 4 {
+    MOVE 2
+    TURN RIGHT
 }
 
-draw_square(5)
-
-IF steps != 0 AND steps <= 10 {
-    TURN LEFT
+// Function definition and function call
+FUNC draw_rectangle(width, height) {
+    MOVE width
+    TURN RIGHT
+    MOVE height
+    TURN RIGHT
+    MOVE width
+    TURN RIGHT
+    MOVE height
+    TURN RIGHT
 }
 
-PEN_UP
-POSITION
+draw_rectangle(4, 2)
+
+// String literals and escape sequences
 PRINT "Robot finished"
-PRINT result
+PRINT "Hello\\nRobot"
+PRINT "Column1\\tColumn2"
+PRINT "Say \\"Hello\\""
+PRINT "Path C:\\\\Robot"
+
+// Lowercase and mixed-case keywords
+move 1
+Turn LEFT
+pen_up
 
 STOP
 """
+
 
 
 
