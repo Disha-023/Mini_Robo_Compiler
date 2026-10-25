@@ -1,4 +1,3 @@
-
 from compiler.lexer import Lexer
 from compiler.parser import Parser
 from compiler.semantic import SemanticAnalyzer
@@ -8,9 +7,7 @@ from robot.executor import RobotExecutor
 from robot.simulator import RobotSimulator
 
 
-# ==========================================
 # ROBOLANG 2.0 - LEXER TEST MODE
-# ==========================================
 
 TEST_NEW_LEXER = True
 
@@ -59,9 +56,9 @@ STOP
 """
 
 
-# ==========================================
+
 # TEST NEW LEXICAL ANALYSIS FEATURES
-# ==========================================
+
 
 if TEST_NEW_LEXER:
 
@@ -85,33 +82,33 @@ if TEST_NEW_LEXER:
     raise SystemExit(0)
 
 
-# ==========================================
+
 # PHASE 2: LEXER
-# ==========================================
+
 
 lexer = Lexer(program)
 tokens = lexer.tokenize()
 
 
-# ==========================================
+
 # PHASE 3 + 4: PARSER + AST
-# ==========================================
+
 
 parser = Parser(tokens)
 ast = parser.parse()
 
 
-# ==========================================
+
 # PHASE 5: SEMANTIC ANALYSIS
-# ==========================================
+
 
 analyzer = SemanticAnalyzer()
 analyzer.analyze(ast)
 
 
-# ==========================================
+
 # PHASE 6: IR GENERATION
-# ==========================================
+
 
 ir_generator = IRGenerator()
 instructions = ir_generator.generate(ast)
@@ -122,9 +119,7 @@ for instruction in instructions:
     print(instruction)
 
 
-# ==========================================
 # PHASE 7: CODE GENERATION
-# ==========================================
 
 code_generator = CodeGenerator()
 generated_code = code_generator.generate(instructions)
@@ -135,9 +130,7 @@ for line in generated_code:
     print(line)
 
 
-# ==========================================
 # ROBOT EXECUTION
-# ==========================================
 
 executor = RobotExecutor()
 
@@ -152,9 +145,7 @@ simulator = RobotSimulator(instructions)
 simulator.run()
 
 
-# ==========================================
 # ROBOT EXECUTION (ORIGINAL SECOND RUN)
-# ==========================================
 
 executor = RobotExecutor()
 
@@ -163,9 +154,8 @@ print("\nRobot Execution:")
 executor.execute(instructions)
 
 
-# ==========================================
+
 # 2D SIMULATOR (ORIGINAL SECOND RUN)
-# ==========================================
 
 print("\nStarting Robot Simulator...")
 
